@@ -1,5 +1,6 @@
 import getWeatherData from "./weatherAPI";
 import "../../style.css";
+import clearDay from "../assets/clear-day.svg";
 
 const searchResDiv = document.querySelector(".searchResult");
 const degrees = document.querySelector(".degrees");
@@ -129,6 +130,14 @@ async function displayElements() {
   }
 }
 
+function showWeatherIcon() {
+  if (locationAndCondition.firstChild) {
+    const weatherIcon = document.createElement("img");
+    weatherIcon.src = clearDay;
+    locationAndCondition.appendChild(weatherIcon);
+  }
+}
+
 function formatTime() {
   if (locationAndCondition.lastChild) {
     const element = locationAndCondition.lastChild.querySelector("span");
@@ -170,6 +179,7 @@ export default function events() {
   async function handleUserInput() {
     removeDisplayedElements();
     await displayElements();
+    showWeatherIcon();
     formatTime();
     handleUVIndex();
   }
