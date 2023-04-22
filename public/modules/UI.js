@@ -1,6 +1,16 @@
 import getWeatherData from "./weatherAPI";
 import "../../style.css";
-import clearDay from "../assets/clear-day.svg";
+import clearIcon from "../assets/clear-day.svg";
+import cloudIcon from "../assets/cloudy.svg";
+import drizzleIcon from "../assets/drizzle.svg";
+import fogIcon from "../assets/fog.svg";
+import mistIcon from "../assets/mist.svg";
+import overcastIcon from "../assets/overcast.svg";
+import partlyCloudyIcon from "../assets/partly-cloudy-day.svg";
+import rainIcon from "../assets/rain.svg";
+import snowIcon from "../assets/snow.svg";
+import thunderstormsIcon from "../assets/thunderstorms.svg";
+import windIcon from "../assets/wind.svg";
 
 const searchResDiv = document.querySelector(".searchResult");
 const degrees = document.querySelector(".degrees");
@@ -133,8 +143,11 @@ async function displayElements() {
 function showWeatherIcon() {
   if (locationAndCondition.firstChild) {
     const weatherIcon = document.createElement("img");
-    weatherIcon.src = clearDay;
-    locationAndCondition.appendChild(weatherIcon);
+    weatherIcon.src = clearIcon;
+    locationAndCondition.insertBefore(
+      weatherIcon,
+      locationAndCondition.firstChild
+    );
   }
 }
 

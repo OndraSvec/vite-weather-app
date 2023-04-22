@@ -135,7 +135,6 @@ button {
   display: flex;
   flex-direction: column;
   gap: calc(var(--form-header-gap) * 5);
-  margin-top: calc(var(--displayDiv-p) * 1.2);
   padding-inline: calc(var(--displayDiv-p) * 0.3);
   font-size: var(--searchRes-fs);
   color: var(--main-color);
@@ -169,6 +168,12 @@ button {
   display: flex;
   justify-content: space-between;
   gap: calc(var(--form-header-gap) * 2.5);
+}
+
+.locationAndCondition > img {
+  width: 50%;
+  height: auto;
+  align-self: center;
 }
 
 .UV {
