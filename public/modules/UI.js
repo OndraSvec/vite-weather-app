@@ -10,7 +10,6 @@ import partlyCloudyIcon from "../assets/partly-cloudy-day.svg";
 import rainIcon from "../assets/rain.svg";
 import snowIcon from "../assets/snow.svg";
 import thunderstormsIcon from "../assets/thunderstorms.svg";
-import windIcon from "../assets/wind.svg";
 
 const searchResDiv = document.querySelector(".searchResult");
 const degrees = document.querySelector(".degrees");
@@ -143,7 +142,33 @@ async function displayElements() {
 function showWeatherIcon() {
   if (locationAndCondition.firstChild) {
     const weatherIcon = document.createElement("img");
-    weatherIcon.src = clearIcon;
+    const weatherCondition =
+      locationAndCondition.children[2].querySelector("span").textContent;
+
+    if (weatherCondition === "Sunny" || weatherCondition === "Clear") {
+      weatherIcon.src = clearIcon;
+    } else if (weatherCondition === "Partly cloudy") {
+      weatherIcon.src = partlyCloudyIcon;
+    } else if (weatherCondition === "Cloudy") {
+      weatherIcon.src = cloudIcon;
+    } else if (weatherCondition === "Overcast") {
+      weatherIcon.src = overcastIcon;
+    } else if (weatherCondition === "Mist") {
+      weatherIcon.src = mistIcon;
+    } else if (weatherCondition.toLowerCase().includes("fog")) {
+      weatherIcon.src = fogIcon;
+    } else if (weatherCondition.toLowerCase().includes("drizzle")) {
+      weatherIcon.src = drizzleIcon;
+    } else if (weatherCondition.toLowerCase().includes("thunder")) {
+      weatherIcon.src = thunderstormsIcon;
+    } else if (
+      weatherCondition.toLowerCase().includes("rain") ||
+      weatherCondition.toLowerCase().includes("sleet")
+    ) {
+      weatherIcon.src = rainIcon;
+    } else {
+      weatherIcon.src = snowIcon;
+    }
     locationAndCondition.insertBefore(
       weatherIcon,
       locationAndCondition.firstChild
